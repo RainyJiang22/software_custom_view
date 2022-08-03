@@ -159,38 +159,35 @@ public class ColorEditDialog extends Dialog {
             val2.setText(v2);
             val3.setText(v3);
 
-            doneButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    try {
-                        int hue=Integer.parseInt(val1.getText().toString());
-                        int sat=Integer.parseInt(val2.getText().toString());
-                        int val=Integer.parseInt(val3.getText().toString());
+            doneButton.setOnClickListener(v -> {
+                try {
+                    int hue=Integer.parseInt(val1.getText().toString());
+                    int sat=Integer.parseInt(val2.getText().toString());
+                    int val=Integer.parseInt(val3.getText().toString());
 
-                        if(hue<0 || hue>360){
-                            Toast.makeText(getContext(),"Hue should be between 0"+"\u00b0"+" and 360"+"\u00b0",Toast.LENGTH_LONG).show();
-                            return;
-                        }
-
-                        if(sat<0 || sat>100 || val<0 || val>100){
-                            Toast.makeText(getContext(),"Sat and Val should be between 0% and 100%",Toast.LENGTH_LONG).show();
-                            return;
-                        }
-
-                        float[] hsv=new float[]{hue,(sat*1f)/100,(val*1f)/100};
-
-                        if(onColorEditedListener!=null){
-                            onColorEditedListener.onColorEdited(Color.HSVToColor(eAlpha,hsv));
-                        }
-
-                        dismiss();
+                    if(hue<0 || hue>360){
+                        Toast.makeText(getContext(),"Hue should be between 0"+"\u00b0"+" and 360"+"\u00b0",Toast.LENGTH_LONG).show();
                         return;
-
-                    } catch (NumberFormatException e) {
-                        e.printStackTrace();
-
-                        Toast.makeText(getContext(),"Enter numeric values",Toast.LENGTH_LONG).show();
                     }
+
+                    if(sat<0 || sat>100 || val<0 || val>100){
+                        Toast.makeText(getContext(),"Sat and Val should be between 0% and 100%",Toast.LENGTH_LONG).show();
+                        return;
+                    }
+
+                    float[] hsv=new float[]{hue,(sat*1f)/100,(val*1f)/100};
+
+                    if(onColorEditedListener!=null){
+                        onColorEditedListener.onColorEdited(Color.HSVToColor(eAlpha,hsv));
+                    }
+
+                    dismiss();
+                    return;
+
+                } catch (NumberFormatException e) {
+                    e.printStackTrace();
+
+                    Toast.makeText(getContext(),"Enter numeric values",Toast.LENGTH_LONG).show();
                 }
             });
         }

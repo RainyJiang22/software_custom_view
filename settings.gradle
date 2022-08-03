@@ -16,3 +16,4 @@ rootProject.name = "software_custom_view"
 include ':app'
 include ':doubleindicatorseekbar'
 include ':color'
+include ':popupmenu'
