@@ -10,12 +10,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        scenery_view.playAnimator()
-        scenery_view.setOnAnimationListener(object : DribbleSceneryView.AnimationListener {
-            override fun onAnimationEnd() {
-                scenery_view.playAnimator()
-            }
-
-        })
+//        scenery_view.playAnimator()
+//        scenery_view.setOnAnimationListener(object : DribbleSceneryView.AnimationListener {
+//            override fun onAnimationEnd() {
+//                scenery_view.playAnimator()
+//            }
+//
+//        })
     }
 }
