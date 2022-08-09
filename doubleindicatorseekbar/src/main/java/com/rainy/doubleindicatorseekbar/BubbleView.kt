@@ -9,6 +9,7 @@ import android.graphics.RectF
 import android.util.AttributeSet
 import android.view.View
 import androidx.core.content.ContextCompat
+import kotlin.math.sqrt
 
 /**
  * @author jiangshiyu
@@ -47,14 +48,14 @@ class BubbleView @JvmOverloads constructor(
         val x0 = measuredWidth / 2f
         val y0 = measuredHeight - mBubbleRadius / 3f
         mBubblePath.moveTo(x0, y0)
-        val x1 = (measuredWidth / 2f - Math.sqrt(3.0) / 2f * mBubbleRadius).toFloat()
+        val x1 = (measuredWidth / 2f - sqrt(3.0) / 2f * mBubbleRadius).toFloat()
         val y1 = 3 / 2f * mBubbleRadius
         mBubblePath.quadTo(
             x1 - ScreenUtil.dip2px(mContext, 2f), y1 - ScreenUtil.dip2px(mContext, 2f),
             x1, y1
         )
         mBubblePath.arcTo(mBubbleRectF, 150f, 240f)
-        val x2 = (measuredWidth / 2f + Math.sqrt(3.0) / 2f * mBubbleRadius).toFloat()
+        val x2 = (measuredWidth / 2f + sqrt(3.0) / 2f * mBubbleRadius).toFloat()
         mBubblePath.quadTo(
             x2 + ScreenUtil.dip2px(mContext, 2f), y1 - ScreenUtil.dip2px(mContext, 2f),
             x0, y0
