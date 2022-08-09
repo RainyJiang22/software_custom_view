@@ -17,6 +17,7 @@ import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import com.rainy.customview.R
+import kotlin.math.abs
 
 
 /**
@@ -130,6 +131,8 @@ class ScratchView @JvmOverloads constructor(
         )
     }
 
+
+    //使用path及其二阶贝塞尔曲线来实现圆润的曲线。(使用一阶时会有明显的转折痕迹，给人一种卡顿的现象）
     @SuppressLint("ClickableViewAccessibility")
     override fun onTouchEvent(event: MotionEvent?): Boolean {
         val action = event!!.action
@@ -142,8 +145,8 @@ class ScratchView @JvmOverloads constructor(
                 mPath.moveTo(mLastX.toFloat(), mLastY.toFloat())
             }
             MotionEvent.ACTION_MOVE -> {
-                val dx = Math.abs(x - mLastX)
-                val dy = Math.abs(y - mLastY)
+                val dx = abs(x - mLastX)
+                val dy = abs(y - mLastY)
                 if (dx > 3 || dy > 3) mPath.lineTo(x.toFloat(), y.toFloat())
                 mLastX = x
                 mLastY = y
@@ -163,11 +166,13 @@ class ScratchView @JvmOverloads constructor(
     private val mRunnable = object : Runnable {
         var mPixels = intArrayOf()
         override fun run() {
-            val w = width
-            val h = height
+            val bitmap: Bitmap = mSrcBitmap!!
+
+            val w = bitmap.width
+            val h = bitmap.height
             var wipeArea = 0f
             val totalArea = (w * h).toFloat()
-            val bitmap: Bitmap = mSrcBitmap!!
+
             mPixels = IntArray(w * h)
             /**
              * 拿到所有的像素信息
@@ -197,4 +202,13 @@ class ScratchView @JvmOverloads constructor(
             }
         }
     }
+
+
+    /**
+     * 1.混合是针对图片的， 需要先将手势轨迹输出到图像上，从而与特定的图片混合实现刮的效果。
+    2、手势的输出使用path及二阶贝塞尔曲线，并注意move时控制点的计算。
+    3、混合时不能使用canvas.save()方法，而应该用saveLayer方法。因为save方法只保存了matrix及clip信息，而没alpha通道相关信息。
+    4、刮开面积的比例是通过获取bitmap的像素计算的，注意如果某个像素点为0则为未绘制，非0为绘制。
+    5、在调试时可以通过Bitmap.compressed方法将bitmap输出到文件查看。
+     */
 }
