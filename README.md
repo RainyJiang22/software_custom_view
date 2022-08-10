@@ -11,3 +11,4 @@
 | 实现Dribbble上动感的Gallery App Icon | **学习定义下dribble上很好看的icon效果**  |
 |实现自定义刮刮卡view|**实现刮刮卡效果，混合模式的运用** |
 |自定义加载loading|**实现环绕图片加载loading效果**|
+|实现可展示当前选中颜色进度的自定义view|**详情请看掘金地址** |

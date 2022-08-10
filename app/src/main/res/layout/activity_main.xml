@@ -27,25 +27,32 @@
     <!--        app:layout_constraintTop_toTopOf="parent" />-->
 
 
-    <com.rainy.customview.loading.ImageLoadingView
-        android:id="@+id/iv_loading"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="@id/iv_result"
-        app:layout_constraintEnd_toEndOf="@id/iv_result"
-        app:layout_constraintStart_toStartOf="@id/iv_result"
-        app:layout_constraintTop_toTopOf="@id/iv_result" />
+    <!--    <com.rainy.customview.loading.ImageLoadingView-->
+    <!--        android:id="@+id/iv_loading"-->
+    <!--        android:layout_width="0dp"-->
+    <!--        android:layout_height="0dp"-->
+    <!--        app:layout_constraintBottom_toBottomOf="@id/iv_result"-->
+    <!--        app:layout_constraintEnd_toEndOf="@id/iv_result"-->
+    <!--        app:layout_constraintStart_toStartOf="@id/iv_result"-->
+    <!--        app:layout_constraintTop_toTopOf="@id/iv_result" />-->
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/iv_result"
-        android:layout_width="260dp"
-        android:layout_height="260dp"
+    <!--    <androidx.appcompat.widget.AppCompatImageView-->
+    <!--        android:id="@+id/iv_result"-->
+    <!--        android:layout_width="260dp"-->
+    <!--        android:layout_height="260dp"-->
+    <!--        android:layout_margin="40dp"-->
+    <!--        android:scaleType="centerCrop"-->
+    <!--        android:src="@drawable/test"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+    <com.rainy.customview.slide.ColorSlideBar
+        android:id="@+id/slide_color"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
         android:layout_margin="40dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/test"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
