@@ -14,8 +14,8 @@ import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import androidx.annotation.ColorInt
+import com.rainy.ColorUtils
 import com.rainy.customview.utils.ColorHelper
-import com.rainy.customview.utils.ColorUtils
 import com.rainy.dp
 import java.util.*
 import kotlin.collections.ArrayList
@@ -72,7 +72,7 @@ class ColorSlideBar @JvmOverloads constructor(context: Context?, attrs: Attribut
             )
         }
         val index = FloatArray(3)
-        ColorUtils.getHSL(currentColor, index)
+        ColorUtils.m26968g(currentColor, index)
         mProgress = index[2]
         Log.d(TAG, "setColor() current color: ${currentColor}, progress:${mProgress}")
         resetBgColor()
@@ -135,7 +135,7 @@ class ColorSlideBar @JvmOverloads constructor(context: Context?, attrs: Attribut
 
     @ColorInt
     private fun getColor(): Int {
-        return ColorUtils.getCurrentColor(mInitColor, mProgress)
+        return ColorUtils.m40486g(mInitColor, mProgress)
     }
 
 
@@ -151,7 +151,7 @@ class ColorSlideBar @JvmOverloads constructor(context: Context?, attrs: Attribut
 
     private fun resetBackground(currentColor: Int): ShapeDrawable {
         val fArr = FloatArray(3)
-        ColorUtils.getHSL(currentColor, fArr)
+        ColorUtils.m26968g(currentColor, fArr)
         val arrayList = ArrayList<Int>()
         val arrayList2 = ArrayList<Float>()
         var i2 = 0
@@ -159,7 +159,7 @@ class ColorSlideBar @JvmOverloads constructor(context: Context?, attrs: Attribut
             val i3 = i2 + 1
             val f = i2.toFloat() / 10.0f
             fArr[2] = f
-            arrayList.add(Integer.valueOf(ColorUtils.rangeToRGB(fArr)))
+            arrayList.add(Integer.valueOf(ColorUtils.m26962a(fArr)))
             arrayList2.add(java.lang.Float.valueOf(f))
             if (i3 > 10) {
                 val cVar = BgDrawableFactory(arrayList, arrayList2)
