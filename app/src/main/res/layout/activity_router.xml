@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:dividerPadding="32dp"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:onClick="scenery"
+        android:text="自定义Dirbble动感AppICON"
+        tools:ignore="HardcodedText" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:onClick="scratch"
+        android:text="自定义刮刮卡view"
+        tools:ignore="HardcodedText" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:onClick="loading"
+        android:text="图片环形loadingView"
+        tools:ignore="HardcodedText" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:onClick="slide"
+        android:text="可展示当前选中颜色自定义view"
+        tools:ignore="HardcodedText" />
+</LinearLayout>

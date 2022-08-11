@@ -14,7 +14,7 @@
         android:theme="@style/Theme.Software_custom_view"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".RouterActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,6 +22,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".scenery.SceneryActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".scratch.ScratchActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".slide.SlideActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".loading.LoadingActivity"
+            android:exported="true" />
+
     </application>
 
 </manifest>
