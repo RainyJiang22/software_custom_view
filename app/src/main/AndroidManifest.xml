@@ -39,6 +39,10 @@
             android:name=".loading.LoadingActivity"
             android:exported="true" />
 
+        <activity
+            android:name=".shine.ShineActivity"
+            android:exported="true" />
+
     </application>
 
 </manifest>

@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.rainy.customview.loading.LoadingActivity
 import com.rainy.customview.scenery.SceneryActivity
 import com.rainy.customview.scratch.ScratchActivity
+import com.rainy.customview.shine.ShineActivity
 import com.rainy.customview.slide.SlideActivity
 
 /**
@@ -35,6 +36,10 @@ class RouterActivity : AppCompatActivity() {
 
     fun slide(view: View) {
         startActivity(Intent(this, SlideActivity::class.java))
+    }
+
+    fun shine(view: View) {
+        startActivity(Intent(this, ShineActivity::class.java))
     }
 
 
