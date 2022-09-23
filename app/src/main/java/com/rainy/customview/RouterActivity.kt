@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.rainy.customview.loading.LoadingActivity
+import com.rainy.customview.noise.NoiseSplineActivity
 import com.rainy.customview.scenery.SceneryActivity
 import com.rainy.customview.scratch.ScratchActivity
 import com.rainy.customview.shine.ShineActivity
@@ -40,6 +41,10 @@ class RouterActivity : AppCompatActivity() {
 
     fun shine(view: View) {
         startActivity(Intent(this, ShineActivity::class.java))
+    }
+
+    fun noise(view: View) {
+        startActivity(Intent(this, NoiseSplineActivity::class.java))
     }
 
 

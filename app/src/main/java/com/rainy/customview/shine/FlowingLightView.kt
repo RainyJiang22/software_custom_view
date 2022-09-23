@@ -12,7 +12,6 @@ import android.graphics.Point
 import android.graphics.Shader
 import android.util.AttributeSet
 import android.view.View
-import android.view.View.MeasureSpec
 import android.view.animation.LinearInterpolator
 import androidx.annotation.Nullable
 
@@ -75,7 +74,7 @@ class FlowingLightView(context: Context?, @Nullable attrs: AttributeSet?, defSty
                 null,
                 Shader.TileMode.CLAMP
             )
-            mPaint?.setShader(mLinearGradient)
+            mPaint?.shader = mLinearGradient
             invalidate()
         })
         mValueAnimator?.start()

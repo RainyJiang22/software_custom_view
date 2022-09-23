@@ -41,4 +41,10 @@
         android:onClick="shine"
         android:text="流光动画-流光字体"
         tools:ignore="HardcodedText" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:onClick="noise"
+        android:text="噪音检测进度条"/>
 </LinearLayout>

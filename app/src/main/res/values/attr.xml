@@ -15,4 +15,8 @@
         <attr name="background_color" format="color" />
     </declare-styleable>
 
+    <declare-styleable name="NoiseSplineView">
+        <attr name="currentDb" format="integer" />
+        <attr name="lastDb" format="integer" />
+    </declare-styleable>
 </resources>
