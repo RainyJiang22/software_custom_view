@@ -47,4 +47,11 @@
         android:layout_height="60dp"
         android:onClick="noise"
         android:text="噪音检测进度条"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:onClick="draft"
+        android:text="自定义一个随意拖拽的悬浮View"/>
+
 </LinearLayout>

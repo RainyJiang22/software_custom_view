@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.rainy.customview.draft.DraftActivity
 import com.rainy.customview.loading.LoadingActivity
 import com.rainy.customview.noise.NoiseSplineActivity
 import com.rainy.customview.scenery.SceneryActivity
@@ -45,6 +46,10 @@ class RouterActivity : AppCompatActivity() {
 
     fun noise(view: View) {
         startActivity(Intent(this, NoiseSplineActivity::class.java))
+    }
+
+    fun draft(view: View) {
+        startActivity(Intent(this, DraftActivity::class.java))
     }
 
 
