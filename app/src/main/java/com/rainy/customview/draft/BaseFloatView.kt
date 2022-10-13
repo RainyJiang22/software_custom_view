@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.res.Resources
 import android.util.AttributeSet
 import android.view.MotionEvent
+import android.view.View
 import android.view.animation.DecelerateInterpolator
 import android.widget.FrameLayout
 import com.google.android.material.imageview.ShapeableImageView
@@ -14,7 +15,7 @@ import kotlin.math.abs
  * @author jiangshiyu
  * @date 2022/10/11
  */
-class FloatView : FrameLayout {
+abstract class BaseFloatView : FrameLayout, View.OnTouchListener {
     constructor(context: Context) : this(context, null)
     constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0)
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
@@ -34,15 +35,18 @@ class FloatView : FrameLayout {
     private var mViewHeight = 0
     private var isMove = false
 
+    companion object {
+        var ADSORB_VERTICAL = 1001
+        var ADSORB_HORIZONTAL = 1002
+    }
+
     private fun initView() {
         val lp = LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT)
         layoutParams = lp
 
-        val imageView = ShapeableImageView(context)
-        imageView.setImageResource(R.drawable.ic_avatar)
 
-        addView(imageView)
-
+        val childView = getChildView()
+        addView(childView)
 
         post {
             mViewWidth = this.width
@@ -52,7 +56,7 @@ class FloatView : FrameLayout {
 
 
     //拖拽
-    override fun onTouchEvent(event: MotionEvent?): Boolean {
+    override fun onTouch(view: View, event: MotionEvent?): Boolean {
         val x = event?.x
         val y = event?.y
         when (event?.action) {
@@ -77,13 +81,20 @@ class FloatView : FrameLayout {
 
             MotionEvent.ACTION_UP -> {
                 if (isMove) {
-                    absLeftAndRight(event)
+                    //判断吸边的方式
+                    if (getAdsorbType() == ADSORB_HORIZONTAL) {
+                        absLeftAndRight(event)
+                    } else if (getAdsorbType() == ADSORB_VERTICAL) {
+                        absTopAndBottom(event)
+                    }
+                } else {
+                    mOnFloatClickListener?.onClick(view)
                 }
                 isMove = false
             }
         }
 
-        return true
+        return getIsCanDrag()
     }
 
 
@@ -164,5 +175,31 @@ class FloatView : FrameLayout {
     private fun getScreenWidth(): Int {
         return Resources.getSystem().displayMetrics.widthPixels
     }
+
+
+    //获取子view
+    protected abstract fun getChildView(): View
+
+    //是否可以拖拽
+    protected abstract fun getIsCanDrag(): Boolean
+
+    /**
+     * 吸边的方式
+     */
+    protected abstract fun getAdsorbType(): Int
+
+    /**
+     * 点击事件
+     */
+    protected var mOnFloatClickListener: OnFloatClickListener? = null
+
+    interface OnFloatClickListener {
+        fun onClick(view: View)
+    }
+
+    fun setOnFloatClickListener(listener: OnFloatClickListener) {
+        mOnFloatClickListener = listener
+    }
+
 
 }

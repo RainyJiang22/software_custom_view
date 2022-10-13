@@ -21,7 +21,7 @@ class DraftActivity : AppCompatActivity() {
             //通过decorView添加到
             val contentView =
                 this.window.decorView.findViewById(android.R.id.content) as FrameLayout
-            contentView.addView(FloatView(this))
+            contentView.addView(AvatarFloatView(this))
         }
     }
 }
