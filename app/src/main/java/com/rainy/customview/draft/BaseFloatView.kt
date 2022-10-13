@@ -47,6 +47,7 @@ abstract class BaseFloatView : FrameLayout, View.OnTouchListener {
 
         val childView = getChildView()
         addView(childView)
+        setOnTouchListener(this)
 
         post {
             mViewWidth = this.width
@@ -199,6 +200,11 @@ abstract class BaseFloatView : FrameLayout, View.OnTouchListener {
 
     fun setOnFloatClickListener(listener: OnFloatClickListener) {
         mOnFloatClickListener = listener
+    }
+
+
+    fun release() {
+        //回收
     }
 
 

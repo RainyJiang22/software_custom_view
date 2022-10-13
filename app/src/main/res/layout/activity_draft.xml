@@ -15,4 +15,31 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="水平吸边"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_add_float_view" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="上下吸边"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_horizontal" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_remove_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="销毁floatview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_vertical" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

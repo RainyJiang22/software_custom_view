@@ -11,6 +11,8 @@ import com.rainy.customview.R
  */
 class AvatarFloatView(context: Context) : BaseFloatView(context) {
 
+    private var mAdsorbType = ADSORB_VERTICAL
+
     override fun getChildView(): View {
         val imageView = ShapeableImageView(context)
         imageView.setImageResource(R.drawable.ic_avatar)
@@ -23,5 +25,9 @@ class AvatarFloatView(context: Context) : BaseFloatView(context) {
 
     override fun getAdsorbType(): Int {
         return ADSORB_VERTICAL
+    }
+
+    fun setAdsorbType(type: Int) {
+        mAdsorbType = type
     }
 }
