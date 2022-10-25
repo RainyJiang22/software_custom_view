@@ -50,6 +50,10 @@
         <activity
             android:name=".draft.DraftActivity"
             android:exported="true" />
+
+        <activity
+            android:name=".countdown.CountDownActivity"
+            android:exported="true" />
     </application>
 
 </manifest>

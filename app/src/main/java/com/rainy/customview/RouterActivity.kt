@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.rainy.customview.countdown.CountDownActivity
 import com.rainy.customview.draft.DraftActivity
 import com.rainy.customview.loading.LoadingActivity
 import com.rainy.customview.noise.NoiseSplineActivity
@@ -52,5 +53,8 @@ class RouterActivity : AppCompatActivity() {
         startActivity(Intent(this, DraftActivity::class.java))
     }
 
+    fun countdown(view: View) {
+        startActivity(Intent(this, CountDownActivity::class.java))
+    }
 
 }
