@@ -6,6 +6,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.rainy.customview.countdown.CountDownActivity
 import com.rainy.customview.draft.DraftActivity
+import com.rainy.customview.hencoder.MainActivity
 import com.rainy.customview.loading.LoadingActivity
 import com.rainy.customview.noise.NoiseSplineActivity
 import com.rainy.customview.scenery.SceneryActivity
@@ -57,4 +58,7 @@ class RouterActivity : AppCompatActivity() {
         startActivity(Intent(this, CountDownActivity::class.java))
     }
 
+    fun learnView(view: View) {
+        startActivity(Intent(this, MainActivity::class.java))
+    }
 }
