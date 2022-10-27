@@ -14,7 +14,7 @@ import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import androidx.annotation.ColorInt
-import com.rainy.ColorUtils
+import com.rainy.customview.utils.ColorUtils
 import com.rainy.customview.utils.ColorHelper
 import com.rainy.dp
 import java.util.*

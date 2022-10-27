@@ -1,4 +1,4 @@
-package com.rainy;
+package com.rainy.customview.utils;
 
 import android.graphics.Color;
 

@@ -54,6 +54,10 @@
         <activity
             android:name=".countdown.CountDownActivity"
             android:exported="true" />
+
+        <activity
+            android:name=".hencoder.MainActivity"
+            android:exported="true" />
     </application>
 
 </manifest>

@@ -7,8 +7,8 @@
 
     <TextView
         android:id="@+id/tv_sub_countdown_min"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:background="@drawable/shape_000000_r_3"
         android:gravity="center"
         android:padding="8dp"
@@ -28,8 +28,8 @@
 
     <TextView
         android:id="@+id/tv_sub_countdown_sec"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_marginLeft="6dp"
         android:background="@drawable/shape_000000_r_3"
         android:gravity="center"
@@ -50,8 +50,8 @@
 
     <TextView
         android:id="@+id/tv_sub_countdown_mill"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_marginLeft="6dp"
         android:background="@drawable/shape_000000_r_3"
         android:gravity="center"
