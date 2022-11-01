@@ -89,6 +89,5 @@ class HenCoderView : View {
 //        canvas?.drawArc(200f, 100f, 800f, 500f, 180f, 60f, false, paint); // 绘制不封口的弧形
 
 
-
     }
 }

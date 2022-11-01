@@ -6,6 +6,7 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.RectF
+import android.telephony.TelephonyCallback
 import android.util.AttributeSet
 import android.view.View
 import com.rainy.customview.hencoder.Data
@@ -125,12 +126,12 @@ class Practice11PieChartView : View {
                 canvas.drawArc(rectF!!, startAngle, sweptAngle - 2f, true, paint);
             }
 
-            paint.setColor(Color.WHITE);
-            paint.setStyle(Paint.Style.STROKE);
+            paint.color = Color.WHITE
+            paint.style = Paint.Style.STROKE
             canvas.drawLine(lineStartX, lineStartY, lineEndX, lineEndY, paint);
             if (halfAngle > 90 && halfAngle <= 270) {
                 canvas.drawLine(lineEndX, lineEndY, lineEndX - 50, lineEndY, paint);
-                paint.style = Paint.Style.FILL;
+                paint.style = Paint.Style.FILL
                 canvas.drawText(
                     data.name,
                     lineEndX - 50 - 10 - paint.measureText(data.name),
@@ -139,7 +140,7 @@ class Practice11PieChartView : View {
                 );
             } else {
                 canvas.drawLine(lineEndX, lineEndY, lineEndX + 50, lineEndY, paint);
-                paint.setStyle(Paint.Style.FILL);
+                paint.style = Paint.Style.FILL;
                 canvas.drawText(data.name, lineEndX + 50 + 10, lineEndY, paint);
             }
             if (max == data.number) {
