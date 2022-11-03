@@ -9,3 +9,9 @@ data class Data(
     val number: Float,
     val color: Int
 )
+
+data class MessageData(
+    val name: String,
+    val number: Float,
+    val color:Int
+)
