@@ -13,6 +13,7 @@ import android.graphics.Shader
 import android.util.AttributeSet
 import android.view.View
 import android.view.animation.LinearInterpolator
+import androidx.annotation.AttrRes
 import androidx.annotation.Nullable
 
 
