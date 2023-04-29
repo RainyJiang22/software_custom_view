@@ -93,7 +93,7 @@ class EraseCutoutView : View, View.OnTouchListener {
 
         //透明背景
         val transparentBitmap =
-            BitmapFactory.decodeResource(resources, R.drawable.imitate_transparent_bg_piece)
+            BitmapFactory.decodeResource(resources, androidx.appcompat.R.drawable.abc_ic_clear_material)
         val transparentShader =
             BitmapShader(transparentBitmap, Shader.TileMode.REPEAT, Shader.TileMode.REPEAT)
         mTransparentPaint.apply {

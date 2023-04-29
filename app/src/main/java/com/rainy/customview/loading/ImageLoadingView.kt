@@ -38,7 +38,7 @@ class ImageLoadingView : View {
     var progress = 0f
         set(value) {
             field = value
-            invalidate()
+            postInvalidateOnAnimation()
             if (progress == 1f) {
                 this.visibility = GONE
             } else {

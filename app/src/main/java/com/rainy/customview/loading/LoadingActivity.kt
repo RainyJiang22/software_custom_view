@@ -35,7 +35,7 @@ class LoadingActivity : AppCompatActivity() {
     private fun startProgress() {
         iv_loading.visibility = View.VISIBLE
 //        总时长1.5秒
-        val totalTime = 1500
+        val totalTime = 10000
         val totalProgress = 100
         val period = (totalTime / totalProgress.toFloat()).toLong()
         if (distProgress?.isDisposed == false) {
@@ -49,6 +49,9 @@ class LoadingActivity : AppCompatActivity() {
                 period,
                 TimeUnit.MILLISECONDS
             ).compose(RxTransformer.async())
+                .doOnComplete {
+                    iv_loading?.progress = 100f
+                }
                 .subscribe {
                     iv_loading?.progress = (it.toInt() / 100f)
                 }

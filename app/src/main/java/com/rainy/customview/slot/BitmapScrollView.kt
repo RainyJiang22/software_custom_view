@@ -145,6 +145,9 @@ class BitmapScrollView @JvmOverloads constructor(
                         (rect.width() - (minScale + (maxScale - minScale) * rate) * rect.width()) / 2
                     spanHeight =
                         (rect.height() - (minScale + (maxScale - minScale) * rate) * rect.height()) / 2
+
+                   val  spanWidthTwo =
+                        (rect.width() - (minScale + (maxScale - minScale) * rate) * rect.height()) / 3
                 }
                 topBottom = true
             }
