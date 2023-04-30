@@ -8,6 +8,7 @@ import com.rainy.customview.countdown.CountDownActivity
 import com.rainy.customview.draft.DraftActivity
 import com.rainy.customview.hencoder.MainActivity
 import com.rainy.customview.loading.LoadingActivity
+import com.rainy.customview.loading.ShimmerActivity
 import com.rainy.customview.noise.NoiseSplineActivity
 import com.rainy.customview.scenery.SceneryActivity
 import com.rainy.customview.scratch.ScratchActivity
@@ -60,5 +61,9 @@ class RouterActivity : AppCompatActivity() {
 
     fun learnView(view: View) {
         startActivity(Intent(this, MainActivity::class.java))
+    }
+
+    fun shimmerView(view: View) {
+        startActivity(Intent(this, ShimmerActivity::class.java))
     }
 }

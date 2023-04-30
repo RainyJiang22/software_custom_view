@@ -58,6 +58,10 @@
         <activity
             android:name=".hencoder.MainActivity"
             android:exported="true" />
+
+        <activity
+            android:name=".loading.ShimmerActivity"
+            android:exported="true" />
     </application>
 
 </manifest>
