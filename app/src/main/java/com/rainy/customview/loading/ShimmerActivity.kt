@@ -1,8 +1,12 @@
 package com.rainy.customview.loading
 
 import android.os.Bundle
+import android.widget.GridLayout
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.facebook.shimmer.Shimmer
 import com.facebook.shimmer.ShimmerDrawable
@@ -11,6 +15,8 @@ import com.rainy.customview.R
 import com.rainy.customview.base.BaseActivity
 import com.rainy.customview.databinding.ActivityShimmerBinding
 import com.rainy.dp
+import kotlinx.android.synthetic.main.activity_shimmer.*
+import kotlinx.coroutines.delay
 
 /**
  * @author jiangshiyu
@@ -18,6 +24,8 @@ import com.rainy.dp
  */
 class ShimmerActivity : BaseActivity<ActivityShimmerBinding, AndroidViewModel>() {
 
+
+    private var mAdapter: ShimmerAdapter? = null
 
     override fun onBundle(bundle: Bundle) {
 
@@ -40,20 +48,38 @@ class ShimmerActivity : BaseActivity<ActivityShimmerBinding, AndroidViewModel>()
             setShimmer(shimmer)
         }
 
-        //set the ShapeAppearanceModel to CornerFamily.ROUNDED and the radius in pixels
-        binding?.shapeImage?.apply {
-            shapeAppearanceModel =
-                this.shapeAppearanceModel.toBuilder().setAllCorners(CornerFamily.ROUNDED, 4.dp)
-                    .build()
-        }
+//        //set the ShapeAppearanceModel to CornerFamily.ROUNDED and the radius in pixels
+//        binding?.shapeImage?.apply {
+//            shapeAppearanceModel =
+//                this.shapeAppearanceModel.toBuilder().setAllCorners(CornerFamily.ROUNDED, 4.dp)
+//                    .build()
+//        }
         val url = "http://baidu.com/1.png"
 
-        //load url from Glide and add shimmerDrawable as placeholder
-        binding?.shapeImage?.let {
-            Glide.with(this).load(url)
-                .placeholder(shimmerDrawable)
-                .into(it)
+        val list = ArrayList<ImageBean>()
+        repeat(10) {
+            list.add(ImageBean(url))
         }
+
+        mAdapter = ShimmerAdapter(list)
+
+
+        rv_shimmer.layoutManager = GridLayoutManager(this, 2, RecyclerView.VERTICAL, false)
+        rv_shimmer.adapter = mAdapter
+        rv_shimmer.showShimmerAdapter()
+
+        lifecycleScope.launchWhenResumed {
+            delay(3000L)
+            rv_shimmer.hideShimmerAdapter()
+        }
+
+
+//        //load url from Glide and add shimmerDrawable as placeholder
+//        binding?.shapeImage?.let {
+//            Glide.with(this).load(url)
+//                .placeholder(shimmerDrawable)
+//                .into(it)
+//        }
 
 
     }
