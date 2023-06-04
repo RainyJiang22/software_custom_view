@@ -10,6 +10,12 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:onClick="fontView"
+        android:text="自定义字体view" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
         android:onClick="scenery"
         android:text="自定义Dirbble动感AppICON"
         tools:ignore="HardcodedText" />
@@ -70,5 +76,5 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:onClick="shimmerView"
-        android:text="微光效果"/>
+        android:text="微光效果" />
 </LinearLayout>

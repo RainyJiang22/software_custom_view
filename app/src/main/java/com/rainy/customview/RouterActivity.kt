@@ -6,6 +6,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.rainy.customview.countdown.CountDownActivity
 import com.rainy.customview.draft.DraftActivity
+import com.rainy.customview.fontview.FontActivity
 import com.rainy.customview.hencoder.MainActivity
 import com.rainy.customview.loading.LoadingActivity
 import com.rainy.customview.loading.ShimmerActivity
@@ -65,5 +66,9 @@ class RouterActivity : AppCompatActivity() {
 
     fun shimmerView(view: View) {
         startActivity(Intent(this, ShimmerActivity::class.java))
+    }
+
+    fun fontView(view: View) {
+        startActivity(Intent(this, FontActivity::class.java))
     }
 }
