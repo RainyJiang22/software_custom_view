@@ -71,4 +71,6 @@ class RouterActivity : AppCompatActivity() {
     fun fontView(view: View) {
         startActivity(Intent(this, FontActivity::class.java))
     }
+
+
 }
