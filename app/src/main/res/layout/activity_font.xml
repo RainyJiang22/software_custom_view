@@ -8,7 +8,7 @@
 
     <com.rainy.customview.fontview.HanYiYaKuTextView
         android:id="@+id/tv_recommend_likes"
-        android:layout_width="80dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:paddingStart="5dp"
@@ -21,7 +21,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:start_color="#FFFFB039"
-        app:stroke_color="#FFFFFDD3"
+        app:stroke_start_color="#FFFFFDD3"
+        app:stroke_end_color="#FFFFFFFF"
         app:stroke_width="1dp" />
 
     <!--    <com.rainy.customview.fontview.RedeemGiftTextView-->
@@ -37,6 +38,7 @@
         android:id="@+id/item_card"
         android:layout_width="200dp"
         android:layout_height="300dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,11 +47,11 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/item_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@id/item_card"
+        app:layout_constraintEnd_toEndOf="@id/item_card"
+        app:layout_constraintStart_toStartOf="@id/item_card"
+        app:layout_constraintTop_toTopOf="@id/item_card" />
 </androidx.constraintlayout.widget.ConstraintLayout>

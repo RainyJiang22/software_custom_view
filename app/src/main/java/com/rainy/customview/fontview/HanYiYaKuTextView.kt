@@ -50,6 +50,8 @@ class HanYiYaKuTextView : AppCompatTextView {
 
     private var colorArray: IntArray? = null
 
+    private var strokeColorArray: IntArray? = null
+
     private var mStrokeColor: Int = -1
     private var rect = Rect()
 
@@ -68,6 +70,10 @@ class HanYiYaKuTextView : AppCompatTextView {
 
             val strokeColor = a.getColor(R.styleable.HanYiYaKuTextView_stroke_color, -1)
             val strokeWidth = a.getDimension(R.styleable.HanYiYaKuTextView_stroke_width, 0f)
+
+
+            val strokeStartColor = a.getColor(R.styleable.HanYiYaKuTextView_stroke_start_color, -1)
+            val strokeEndColor = a.getColor(R.styleable.HanYiYaKuTextView_stroke_end_color, -1)
 
 
             mStrokeColor = if (strokeColor != -1) {
@@ -89,6 +95,10 @@ class HanYiYaKuTextView : AppCompatTextView {
                 colorArray = intArrayOf(startColor, centerColor, endColor)
             } else if (startColor != -1 && endColor != -1) {
                 colorArray = intArrayOf(startColor, endColor)
+            }
+
+            if (strokeStartColor != -1 && strokeEndColor != -1) {
+                strokeColorArray = intArrayOf(strokeStartColor, strokeEndColor)
             }
             a.recycle()
         }
@@ -124,35 +134,22 @@ class HanYiYaKuTextView : AppCompatTextView {
                 )
             }
         }
-//        //描边
-//        val outLinearGradient = LinearGradient(0f,
-//            0f,
-//            0f,
-//            h.toFloat(),
-//            Color.parseColor("#FF58E1FF"),
-//            Color.parseColor("#FF58AAFF"),
-//            Shader.TileMode.CLAMP)
-//        outlineTextView?.paint?.shader = outLinearGradient
+        //描边渐变
+        if (strokeColorArray != null) {
+            val outLinearGradient = LinearGradient(0f,
+                0f,
+                0f,
+                h.toFloat(),
+                strokeColorArray!!,
+                null,
+                Shader.TileMode.CLAMP)
+            outlineTextView?.paint?.shader = outLinearGradient
+        }
     }
 
     override fun setLayoutParams(params: ViewGroup.LayoutParams?) {
         super.setLayoutParams(params)
         outlineTextView?.layoutParams = params
-    }
-
-    override fun onTextChanged(
-        text: CharSequence?,
-        start: Int,
-        lengthBefore: Int,
-        lengthAfter: Int,
-    ) {
-        super.onTextChanged(text, start, lengthBefore, lengthAfter)
-        val outlineText = outlineTextView?.text
-        if (outlineText == null || outlineText != this.text) {
-            outlineTextView?.text = text
-            postInvalidate()
-        }
-
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {

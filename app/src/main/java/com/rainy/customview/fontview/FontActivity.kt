@@ -27,10 +27,10 @@ class FontActivity : AppCompatActivity() {
         }
 
 
-        item_view.layoutParams.apply {
-            this.width = item_card.layoutParams.width
-            this.height = item_card.layoutParams.height
-        }
+//        item_view.layoutParams.apply {
+//            this.width = item_card.layoutParams.width
+//            this.height = item_card.layoutParams.height
+//        }
         item_view.rotation = 5f
         setMargins(item_view, 10.dp.toInt(), 0, 0, 0)
     }
