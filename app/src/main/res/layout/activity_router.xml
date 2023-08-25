@@ -1,80 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:dividerPadding="32dp"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:layout_height="match_parent">
 
-    <Button
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:onClick="fontView"
-        android:text="自定义字体view" />
+        android:layout_height="wrap_content"
+        android:dividerPadding="32dp"
+        android:orientation="vertical"
+        android:padding="16dp">
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:onClick="scenery"
-        android:text="自定义Dirbble动感AppICON"
-        tools:ignore="HardcodedText" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:onClick="fontView"
+            android:text="自定义字体view" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:onClick="scratch"
-        android:text="自定义刮刮卡view"
-        tools:ignore="HardcodedText" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:onClick="scenery"
+            android:text="自定义Dirbble动感AppICON"
+            tools:ignore="HardcodedText" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:onClick="loading"
-        android:text="图片环形loadingView"
-        tools:ignore="HardcodedText" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:onClick="scratch"
+            android:text="自定义刮刮卡view"
+            tools:ignore="HardcodedText" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:onClick="slide"
-        android:text="可展示当前选中颜色自定义view"
-        tools:ignore="HardcodedText" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:onClick="loading"
+            android:text="图片环形loadingView"
+            tools:ignore="HardcodedText" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:onClick="shine"
-        android:text="流光动画-流光字体"
-        tools:ignore="HardcodedText" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:onClick="slide"
+            android:text="可展示当前选中颜色自定义view"
+            tools:ignore="HardcodedText" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:onClick="noise"
-        android:text="噪音检测进度条" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:onClick="shine"
+            android:text="流光动画-流光字体"
+            tools:ignore="HardcodedText" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:onClick="draft"
-        android:text="自定义一个随意拖拽的悬浮View" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:onClick="noise"
+            android:text="噪音检测进度条" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:onClick="countdown"
-        android:text="倒计时组件widget" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:onClick="draft"
+            android:text="自定义一个随意拖拽的悬浮View" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:onClick="learnView"
-        android:text="自定义view学习" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:onClick="countdown"
+            android:text="倒计时组件widget" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:onClick="shimmerView"
-        android:text="微光效果" />
-</LinearLayout>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:onClick="learnView"
+            android:text="自定义view学习" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:onClick="shimmerView"
+            android:text="微光效果" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:onClick="notification"
+            android:text="通知栏1" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:onClick="notification2"
+            android:text="通知栏2" />
+    </LinearLayout>
+
+</ScrollView>

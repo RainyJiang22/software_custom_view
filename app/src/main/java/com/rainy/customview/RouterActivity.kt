@@ -11,6 +11,8 @@ import com.rainy.customview.hencoder.MainActivity
 import com.rainy.customview.loading.LoadingActivity
 import com.rainy.customview.loading.ShimmerActivity
 import com.rainy.customview.noise.NoiseSplineActivity
+import com.rainy.customview.notification.NotificationActivity
+import com.rainy.customview.notification.TestActivity
 import com.rainy.customview.scenery.SceneryActivity
 import com.rainy.customview.scratch.ScratchActivity
 import com.rainy.customview.shine.ShineActivity
@@ -72,5 +74,13 @@ class RouterActivity : AppCompatActivity() {
         startActivity(Intent(this, FontActivity::class.java))
     }
 
+
+    fun notification(view: View) {
+        startActivity(Intent(this, NotificationActivity::class.java))
+    }
+
+    fun notification2(view: View) {
+        startActivity(Intent(this, TestActivity::class.java))
+    }
 
 }

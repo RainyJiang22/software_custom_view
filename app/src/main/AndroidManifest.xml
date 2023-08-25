@@ -3,6 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.rainy.customview">
 
+
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+
     <application
         android:name=".AppApplication"
         android:allowBackup="true"
@@ -67,6 +71,20 @@
         <activity
             android:name=".loading.ShimmerActivity"
             android:exported="true" />
+
+        <activity android:name=".notification.NotificationActivity"
+            android:exported="false"/>
+
+        <activity android:name=".notification.TestActivity"
+            android:exported="false"/>
+
+        <receiver
+            android:name=".notification.MessageNotificationReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="ClickAction" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
