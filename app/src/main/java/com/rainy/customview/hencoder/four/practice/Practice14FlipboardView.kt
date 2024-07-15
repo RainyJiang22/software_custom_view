@@ -1,4 +1,4 @@
-package com.rainy.customview.hencoder.four.sample
+package com.rainy.customview.hencoder.four.practice
 
 import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
@@ -7,23 +7,18 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Camera
 import android.graphics.Canvas
-import android.graphics.Matrix
 import android.graphics.Paint
-import android.graphics.Point
 import android.util.AttributeSet
-import android.util.DisplayMetrics
 import android.view.View
 import android.view.animation.LinearInterpolator
 import com.rainy.customview.R
 
-class Sample13CameraRotateHittingFaceView : View {
+class Practice14FlipboardView : View {
     var paint = Paint(Paint.ANTI_ALIAS_FLAG)
     var bitmap: Bitmap? = null
-    var point = Point(200, 200)
     var camera = Camera()
-    private val matr = Matrix()
     var degrees = 0
-    var animator: ObjectAnimator = ObjectAnimator.ofInt(this, "degree", 0, 360)
+    var animator: ObjectAnimator = ObjectAnimator.ofInt(this, "degree", 0, 180)
 
     constructor(context: Context?) : super(context)
     constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs)
@@ -35,17 +30,10 @@ class Sample13CameraRotateHittingFaceView : View {
 
     init {
         bitmap = BitmapFactory.decodeResource(resources, R.drawable.maps)
-        val scaledBitmap = Bitmap.createScaledBitmap(
-            bitmap!!, bitmap!!.width * 2, bitmap!!.height * 2, true
-        )
-        bitmap!!.recycle()
-        bitmap = scaledBitmap
-        animator.setDuration(5000)
-        animator.setInterpolator(LinearInterpolator())
-        animator.setRepeatCount(ValueAnimator.INFINITE)
-        val displayMetrics: DisplayMetrics = resources.displayMetrics
-        val newZ: Float = -displayMetrics.density * 6
-        camera.setLocation(0f, 0f, newZ)
+        animator.duration = 2500
+        animator.interpolator = LinearInterpolator()
+        animator.repeatCount = ValueAnimator.INFINITE
+        animator.repeatMode = ValueAnimator.REVERSE
     }
 
     override fun onAttachedToWindow() {
@@ -68,18 +56,31 @@ class Sample13CameraRotateHittingFaceView : View {
         super.onDraw(canvas)
         val bitmapWidth = bitmap!!.width
         val bitmapHeight = bitmap!!.height
-        val centerX = point.x + bitmapWidth / 2
-        val centerY = point.y + bitmapHeight / 2
-        camera.save()
-        matr.reset()
-        camera.rotateY(degrees.toFloat())
-        camera.getMatrix(matr)
-        camera.restore()
-        matr.preTranslate(-centerX.toFloat(), -centerY.toFloat())
-        matr.postTranslate(centerX.toFloat(), centerY.toFloat())
+        val centerX = width / 2
+        val centerY = height / 2
+        val x = centerX - bitmapWidth / 2
+        val y = centerY - bitmapHeight / 2
+
+        // 第一遍绘制：上半部分
         canvas.save()
-        canvas.concat(matr)
-        canvas.drawBitmap(bitmap!!, point.x.toFloat(), point.y.toFloat(), paint)
+        canvas.clipRect(0, 0, width, centerY)
+        canvas.drawBitmap(bitmap!!, x.toFloat(), y.toFloat(), paint)
+        canvas.restore()
+
+        // 第二遍绘制：下半部分
+        canvas.save()
+        if (degrees < 90) {
+            canvas.clipRect(0, centerY, width, height)
+        } else {
+            canvas.clipRect(0, 0, width, centerY)
+        }
+        camera.save()
+        camera.rotateX(degrees.toFloat())
+        canvas.translate(centerX.toFloat(), centerY.toFloat())
+        camera.applyToCanvas(canvas)
+        canvas.translate(-centerX.toFloat(), -centerY.toFloat())
+        camera.restore()
+        canvas.drawBitmap(bitmap!!, x.toFloat(), y.toFloat(), paint)
         canvas.restore()
     }
 }
