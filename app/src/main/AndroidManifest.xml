@@ -72,11 +72,17 @@
             android:name=".loading.ShimmerActivity"
             android:exported="true" />
 
-        <activity android:name=".notification.NotificationActivity"
-            android:exported="false"/>
+        <activity
+            android:name=".notification.NotificationActivity"
+            android:exported="false" />
 
-        <activity android:name=".notification.TestActivity"
-            android:exported="false"/>
+        <activity
+            android:name=".notification.TestActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".randomtext.RandomTextActivity"
+            android:exported="false" />
 
         <receiver
             android:name=".notification.MessageNotificationReceiver"

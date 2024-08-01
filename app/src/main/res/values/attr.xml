@@ -70,4 +70,15 @@
         <attr name="stroke_start_color" format="color|reference" />
         <attr name="stroke_end_color" format="color|reference" />
     </declare-styleable>
+
+
+    <attr name="titleText" format="string" />
+    <attr name="titleTextColor" format="color" />
+    <attr name="titleTextSize" format="dimension" />
+
+    <declare-styleable name="RandomTextView">
+        <attr name="titleText" />
+        <attr name="titleTextColor" />
+        <attr name="titleTextSize" />
+    </declare-styleable>
 </resources>

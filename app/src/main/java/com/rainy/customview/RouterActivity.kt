@@ -13,6 +13,7 @@ import com.rainy.customview.loading.ShimmerActivity
 import com.rainy.customview.noise.NoiseSplineActivity
 import com.rainy.customview.notification.NotificationActivity
 import com.rainy.customview.notification.TestActivity
+import com.rainy.customview.randomtext.RandomTextActivity
 import com.rainy.customview.scenery.SceneryActivity
 import com.rainy.customview.scratch.ScratchActivity
 import com.rainy.customview.shine.ShineActivity
@@ -81,6 +82,10 @@ class RouterActivity : AppCompatActivity() {
 
     fun notification2(view: View) {
         startActivity(Intent(this, TestActivity::class.java))
+    }
+
+    fun randomText(view: View) {
+        startActivity(Intent(this, RandomTextActivity::class.java))
     }
 
 }
