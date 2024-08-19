@@ -22,7 +22,7 @@ fun threadFactory(
 }
 
 fun getProtocol(request_Custom_: Request) = run {
-    var url = URL(request_Custom_.url)
+    val url = URL(request_Custom_.url)
     url.protocol
 }
 
@@ -30,7 +30,7 @@ fun getProtocol(request_Custom_: Request) = run {
  * todo 域名
  */
 fun getHost(request_Custom_: Request):String{
-    var url = URL(request_Custom_.url)
+    val url = URL(request_Custom_.url)
     return url.host
 }
 
@@ -38,7 +38,7 @@ fun getHost(request_Custom_: Request):String{
  * todo 端口
  */
 fun getPort(request_Custom_: Request):Int {
-    var url = URL(request_Custom_.url)
+    val url = URL(request_Custom_.url)
     return if (url.port == -1) url.defaultPort else url.port
 }
 
@@ -66,8 +66,8 @@ fun getRequestHeaderAll(request_Custom_: Request): String {
      * Content-Type: application/x-www-form-urlencoded\r\n
      */
     if (!request_Custom_.mHeaderList.isEmpty()){
-        var map = request_Custom_.mHeaderList
-        map.forEach(){
+        val map = request_Custom_.mHeaderList
+        map.forEach {
             stringBuffer
                 .append(it.key)
                 .append(":").append(K)

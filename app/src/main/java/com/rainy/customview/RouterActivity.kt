@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.rainy.customview.countdown.CountDownActivity
+import com.rainy.customview.customOkhttp.ui.OKHttpActivity
 import com.rainy.customview.draft.DraftActivity
 import com.rainy.customview.fontview.FontActivity
 import com.rainy.customview.hencoder.MainActivity
@@ -86,6 +87,10 @@ class RouterActivity : AppCompatActivity() {
 
     fun randomText(view: View) {
         startActivity(Intent(this, RandomTextActivity::class.java))
+    }
+
+    fun httpText(view: View) {
+        startActivity(Intent(this, OKHttpActivity::class.java))
     }
 
 }
