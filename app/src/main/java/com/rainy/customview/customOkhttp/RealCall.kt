@@ -4,6 +4,7 @@ import com.rainy.customview.customOkhttp.chain.ConnectionServerInterceptor
 import com.rainy.customview.customOkhttp.chain.Interceptor
 import com.rainy.customview.customOkhttp.chain.RealInterceptorChain
 import com.rainy.customview.customOkhttp.chain.RequestHeaderInterceptor
+import com.rainy.customview.customOkhttp.chain.RetryInterceptor
 import java.io.IOException
 
 /**

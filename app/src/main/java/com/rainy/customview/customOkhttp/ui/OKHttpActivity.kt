@@ -53,11 +53,11 @@ class OKHttpActivity : AppCompatActivity() {
     }
 
     private fun getRequest2() {
-        val okHttpClient = HttpClient.Builder().build()
+        val okHttpClient = HttpClient.Builder().setRetryTimes(3).build()
 
-        val request = Request.Builder()
-            .url("http://www.kuaidi100.com/query?type=yuantong&postid=222222222")
-            .build()
+        val request =
+            Request.Builder().url("http://www.kuaidi100.com/query?type=yuantong&postid=222222222")
+                .build()
 
         val call = okHttpClient.newCall(request)
 
@@ -81,10 +81,8 @@ class OKHttpActivity : AppCompatActivity() {
         }
         val client = HttpClient.Builder().build()
 
-        val request = Request.Builder()
-            .post(requestBody)
-            .url("http://restapi.amap.com/v3/weather/weatherInfo")
-            .build()
+        val request = Request.Builder().post(requestBody)
+            .url("http://restapi.amap.com/v3/weather/weatherInfo").build()
 
         val call = client.newCall(request)
         call.enqueue(object : CallBack {
@@ -108,10 +106,8 @@ class OKHttpActivity : AppCompatActivity() {
 
         val client = HttpClient.Builder().build()
 
-        val request = Request.Builder()
-            .post(requestBody)
-            .url("http://restapi.amap.com/v3/weather/weatherInfo")
-            .build()
+        val request = Request.Builder().post(requestBody)
+            .url("http://restapi.amap.com/v3/weather/weatherInfo").build()
 
         val call = client.newCall(request)
         call.enqueue(object : CallBack {
