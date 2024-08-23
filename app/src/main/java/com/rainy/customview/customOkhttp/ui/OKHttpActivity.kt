@@ -40,6 +40,7 @@ class OKHttpActivity : AppCompatActivity() {
 
         val call = okHttpClient.newCall(request)
 
+
         call.enqueue(object : CallBack {
             override fun onFailure(call: Call, e: IOException) {
                 Log.d(TAG, "onFailure: e = \n$e")

@@ -19,10 +19,14 @@ class HttpClient internal constructor(builder: Builder) {
     class Builder internal constructor(
         internal var dispatcher: Dispatcher = Dispatcher(),
         internal var retryTimes: Int = 0,
-        internal var connectionPool: ConnectionPool = ConnectionPool()
+        internal var connectionPool: ConnectionPool = ConnectionPool(),
     ) {
 
         fun dispatcher(dispatcher: Dispatcher): Builder = apply { this.dispatcher = dispatcher }
+
+        fun setConnectionPool(connectionPool: ConnectionPool): Builder = apply {
+            this.connectionPool = connectionPool
+        }
 
         //设置重置次数
         fun setRetryTimes(retryTimes: Int): Builder = apply {

@@ -1,5 +1,7 @@
 package com.rainy.customview.customOkhttp
 
+import android.util.Log
+import com.rainy.customview.customOkhttp.chain.TAG
 import com.rainy.customview.customOkhttp.chain.threadFactory
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.SynchronousQueue
@@ -36,11 +38,14 @@ class Dispatcher {
         }
 
     internal fun enqueue(call: RealCall.AsyncCall) {
-
+        Log.e(TAG, "同时有:" + runningAsyncCalls.size)
+        Log.e(TAG, "host同时有:" + runningCallsForHost(call))
         if (runningAsyncCalls.size < maxRequests && runningCallsForHost(call) < maxRequestsPerHost) {
+            Log.e(TAG, "enqueue: 提交执行" )
             runningAsyncCalls.add(call)
             executorService.execute(call)
         } else {
+            Log.e(TAG, "enqueue: 等待执行")
             readyAsyncCalls.add(call)
         }
     }
@@ -61,12 +66,45 @@ class Dispatcher {
     }
 
     fun finish(asyncCall: RealCall.AsyncCall) {
-        if (readyAsyncCalls.size > 0) {
-            val call = readyAsyncCalls.first()
-            readyAsyncCalls.removeFirst()
-            runningAsyncCalls.add(call)
-            executorService.execute(call)
+        synchronized(this) {
+            runningAsyncCalls.remove(asyncCall)
+            checkReadyCalls()
         }
+//        if (readyAsyncCalls.size > 0) {
+//            val call = readyAsyncCalls.first()
+//            readyAsyncCalls.removeFirst()
+//            runningAsyncCalls.add(call)
+//            executorService.execute(call)
+//        }
     }
 
+
+    /**
+     * 检查是否可以运行等待中的请求
+     */
+    private fun checkReadyCalls() {
+        //达到了同时请求的最大数
+        if (runningAsyncCalls.size >= maxRequests) {
+            return
+        }
+
+        //没有等待执行的任务
+        if (readyAsyncCalls.isEmpty()) {
+            return
+        }
+
+        val asyncCallIterator: MutableIterator<RealCall.AsyncCall> = readyAsyncCalls.iterator()
+        while (asyncCallIterator.hasNext()) {
+            val asyncCall: RealCall.AsyncCall = asyncCallIterator.next()
+            //如果获得的等待执行的任务 执行后 小于host相同最大允许数 就可以去执行
+            if (runningCallsForHost(asyncCall) < maxRequestsPerHost) {
+                asyncCallIterator.remove()
+                runningAsyncCalls.add(asyncCall)
+                executorService.execute(asyncCall)
+            }
+            if (runningAsyncCalls.size >= maxRequests) {
+                return
+            }
+        }
+    }
 }

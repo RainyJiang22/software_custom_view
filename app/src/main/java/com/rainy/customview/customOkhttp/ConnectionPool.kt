@@ -25,9 +25,6 @@ class ConnectionPool @JvmOverloads constructor(
 
     private var cleanupRunning = false
 
-    //5分钟延迟
-    private var maxDuration: Long = 5 * 60 * 1000L
-
     private val executor: Executor = ThreadPoolExecutor(
         0, Int.MAX_VALUE, 60L, TimeUnit.SECONDS, SynchronousQueue()
     ) { runnable ->
