@@ -104,7 +104,7 @@ class OKHttpActivity : AppCompatActivity() {
         }
 
 
-        val client = HttpClient.Builder().build()
+        val client = HttpClient.Builder().setRetryTimes(2).build()
 
         val request = Request.Builder().post(requestBody)
             .url("http://restapi.amap.com/v3/weather/weatherInfo").build()

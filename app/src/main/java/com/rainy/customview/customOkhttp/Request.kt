@@ -1,5 +1,7 @@
 package com.rainy.customview.customOkhttp
 
+import com.rainy.customview.customOkhttp.chain.getHost
+
 /**
  * @author jiangshiyu
  * @date 2024/8/19
@@ -17,7 +19,6 @@ class Request internal constructor(
         private var mHeaderList = mutableMapOf<String, String>()
         private var requestMethod = "GET"
         private var requestBody: RequestBody? = null
-
 
         //请求链接
         fun url(url:String) = apply {

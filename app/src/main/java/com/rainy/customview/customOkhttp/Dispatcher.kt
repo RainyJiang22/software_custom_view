@@ -12,9 +12,13 @@ import java.util.concurrent.TimeUnit
  */
 class Dispatcher {
 
+    //等待双端队列
     private val readyAsyncCalls = ArrayDeque<RealCall.AsyncCall>()
 
-    private val runningAsyncCalls = java.util.ArrayDeque<RealCall.AsyncCall>()
+    //运行中的双端队列
+    private val runningAsyncCalls = ArrayDeque<RealCall.AsyncCall>()
+
+
     private val maxRequests = 64
     private val maxRequestsPerHost = 5
 
@@ -42,12 +46,18 @@ class Dispatcher {
     }
 
 
-    private fun runningCallsForHost(call: RealCall.AsyncCall): Int {
-        //todo 懒得做处理
-//        for (runningAsyncCall in runningAsyncCalls) {
-//
-//        }
-        return 1;
+    /**
+     * 获取正在运行队列的数量
+     *
+     */
+    private fun runningCallsForHost(asyncCall: RealCall.AsyncCall): Int {
+        var count = 0
+        for (runningAsyncCall in runningAsyncCalls) {
+            if (runningAsyncCall.getHost() == asyncCall.getHost()) {
+                count++
+            }
+        }
+        return count
     }
 
     fun finish(asyncCall: RealCall.AsyncCall) {
@@ -58,4 +68,5 @@ class Dispatcher {
             executorService.execute(call)
         }
     }
+
 }

@@ -14,31 +14,31 @@ val TAG = "OKHttp_Kotlin"
 
 fun threadFactory(
     name: String,
-    daemon: Boolean
+    daemon: Boolean,
 ): ThreadFactory = ThreadFactory { runnable ->
     Thread(runnable, name).apply {
         isDaemon = daemon
     }
 }
 
-fun getProtocol(request_Custom_: Request) = run {
-    val url = URL(request_Custom_.url)
+fun String.getProtocol() = run {
+    val url = URL(this)
     url.protocol
 }
 
 /**
- * todo 域名
+ * 域名
  */
-fun getHost(request_Custom_: Request):String{
-    val url = URL(request_Custom_.url)
+fun String.getHost(): String {
+    val url = URL(this)
     return url.host
 }
 
 /**
- * todo 端口
+ * 端口
  */
-fun getPort(request_Custom_: Request):Int {
-    val url = URL(request_Custom_.url)
+fun String.getPort(): Int {
+    val url = URL(this)
     return if (url.port == -1) url.defaultPort else url.port
 }
 
@@ -65,7 +65,7 @@ fun getRequestHeaderAll(request_Custom_: Request): String {
      * Host: restapi.amap.com\r\n
      * Content-Type: application/x-www-form-urlencoded\r\n
      */
-    if (!request_Custom_.mHeaderList.isEmpty()){
+    if (request_Custom_.mHeaderList.isNotEmpty()) {
         val map = request_Custom_.mHeaderList
         map.forEach {
             stringBuffer

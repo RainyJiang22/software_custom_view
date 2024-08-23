@@ -1,7 +1,6 @@
 package com.rainy.customview.customOkhttp.chain
 
 import android.util.Log
-import com.rainy.customview.customOkhttp.Request
 import com.rainy.customview.customOkhttp.Response
 import java.io.BufferedReader
 import java.io.BufferedWriter
@@ -20,11 +19,14 @@ class ConnectionServerInterceptor : Interceptor {
 
         val request = realInterceptorChain.request
 
+        val host = request.url.getHost()
+        val protocol = request.url.getProtocol()
+        val port = request.url.getPort()
         //http，https
-        val socket = if (getProtocol(request).equals("HTTP", true)) {
-            Socket(getHost(request), getPort(request))
+        val socket = if (protocol.equals("HTTP", true)) {
+            Socket(host, port)
         } else {
-            SSLSocketFactory.getDefault().createSocket(getHost(request), getPort(request))
+            SSLSocketFactory.getDefault().createSocket(host, port)
         }
 
         //请求
@@ -46,14 +48,14 @@ class ConnectionServerInterceptor : Interceptor {
         val str = readLine.split(" ")
         response.statusCode = str[1].toInt()
 
-        var readerLine =  bufferReader.readLine()
+        var readerLine = bufferReader.readLine()
 
-        while (readerLine != null){
-            if ("" == readerLine){     // 读到空行了，就代表下面就是 响应体了
+        while (readerLine != null) {
+            if ("" == readerLine) {     // 读到空行了，就代表下面就是 响应体了
                 response.body = bufferReader.readLine()
                 break
             }
-            readerLine =  bufferReader.readLine()
+            readerLine = bufferReader.readLine()
         }
 
         return response
